@@ -42,6 +42,8 @@
       },
       "runtime" : {
          "requires" : {
+            "Otogiri" : "0.18",
+            "Otogiri::Plugin" : "0.03",
             "perl" : "5.008001"
          }
       },

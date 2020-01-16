@@ -5,7 +5,18 @@ use warnings;
 
 our $VERSION = "0.01";
 
+use Otogiri;
+use Otogiri::Plugin;
 
+our @EXPORT = qw(select_with_columns search_with_columns);
+
+sub select_with_columns {
+    my ($self, $table, $columns, $param, @opts) = @_;
+    my ($sql, @binds) = $self->maker->select($table, $columns, $param, @opts);
+    $self->search_by_sql($sql, \@binds, $table);
+}
+
+*search_with_columns = *select_with_columns;
 
 1;
 __END__
