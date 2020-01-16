@@ -25,15 +25,30 @@ __END__
 
 =head1 NAME
 
-Otogiri::Plugin::SelectWithColumns - It's new $module
+Otogiri::Plugin::SelectWithColumns - Otogiri plugin to search row-data that contains only specific columns from database
 
 =head1 SYNOPSIS
 
-    use Otogiri::Plugin::SelectWithColumns;
+    use Otogiri;
+    use Otogiri::Plugin;
+    my $db = Otogiri->new(connect_info => [...]);
+    $db->load_plugin('SelectWithColumns');
+    
+    ## SELECT `id`, `name` FROM `some_table` WHERE `author`="ytnobody" ORDER BY id ASC
+    my @rows = $db->select_with_columns(
+        'some_table', 
+        ['id', 'name'], 
+        {'author' => 'ytnobody'}, 
+        {order_by => 'id ASC'}
+    );
+    
+    my $row = $rows[0];
+    print join(", ", keys($row)) . "\n"; ## --> "id, name\n"
+
 
 =head1 DESCRIPTION
 
-Otogiri::Plugin::SelectWithColumns is ...
+Otogiri::Plugin::SelectWithColumns is plugin for L<Otogiri> to search row-data that contains only specific columns from database。
 
 =head1 LICENSE
 

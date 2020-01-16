@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "Otogiri plugin to search row-data that contains only specific columns from database",
    "author" : [
       "Satoshi Azuma <ytnobody@gmail.com>"
    ],
